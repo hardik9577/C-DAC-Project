@@ -1,0 +1,9 @@
+insert into standard values(1, 50000, "I");
+insert into standard values(2, 60000, "II");
+insert into standard values(3, 70000, "III");
+insert into standard values(4, 80000, "IV");
+insert into standard values(5, 90000, "V");
+
+insert into roles_jpa(user_role) values('ROLE_ADMIN');
+insert into roles_jpa(user_role) values('ROLE_STUDENT');
+insert into roles_jpa(user_role) values('ROLE_TEACHER');
