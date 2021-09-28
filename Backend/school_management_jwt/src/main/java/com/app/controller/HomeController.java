@@ -23,8 +23,14 @@ public class HomeController {
 	}
 	
 	@GetMapping("/teacher")
-	@PreAuthorize("hasRole('MODERATOR')")
+	@PreAuthorize("hasRole('TEACHER')")
 	public String TeacherAccess() {
 		return "Teacher Board.";
+	}
+	
+	@GetMapping("/student")
+	@PreAuthorize("hasRole('STUDENT')")
+	public String StudentAccess() {
+		return "Student Board.";
 	}
 }

@@ -20,13 +20,11 @@ public class Feedback {
 	@Column(length = 20)
 	private String subject;
 	
-	@ManyToOne
-	@JoinColumn(name = "student_id")
-	private Student student;
+	@Column(length = 10)
+	private int studentId;
 	
-	@ManyToOne
-	@JoinColumn(name = "teacher_id")
-	private Teacher teacher;
+	@Column(length = 10)
+	private int teacherId;
 	public int getId() {
 		return id;
 	}
@@ -45,23 +43,17 @@ public class Feedback {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public Student getStudent() {
-		return student;
+	public int getStudentId() {
+		return studentId;
 	}
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
 	}
-	public Teacher getTeacher() {
-		return teacher;
+	public int getTeacherId() {
+		return teacherId;
 	}
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
+	public void setTeacherId(int teacherId) {
+		this.teacherId = teacherId;
 	}
-	@Override
-	public String toString() {
-		return "Feedback [id=" + id + ", feedback=" + feedback + ", subject=" + subject + ", student=" + student
-				+ ", teacher=" + teacher + "]";
-	}
-	
 	
 }

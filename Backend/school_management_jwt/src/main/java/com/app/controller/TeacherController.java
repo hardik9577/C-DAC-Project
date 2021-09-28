@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.FeedbackRequest;
+import com.app.dto.FeedbackResponseDTO;
 import com.app.dto.TeacherResponseDTO;
 import com.app.dto.TeacherSignupRequest;
+import com.app.pojos.Feedback;
 import com.app.pojos.Teacher;
+import com.app.service.IFeedbackService;
 import com.app.service.ITeacherService;
 
 @CrossOrigin
@@ -26,6 +30,9 @@ public class TeacherController {
 
 	@Autowired
 	private ITeacherService teacherService;
+	
+	@Autowired
+	private IFeedbackService feedbackService;
 	
 	@PostMapping("/register")
 	public ResponseEntity<TeacherResponseDTO> registerTeacher(@RequestBody TeacherSignupRequest teacherRequest) {
@@ -57,5 +64,11 @@ public class TeacherController {
 		Teacher existingTeacher = teacherService.getDetails(id);
 		System.out.println(existingTeacher);
 		return ResponseEntity.ok(teacherService.updateDetails(teacher));
+	}
+	
+	@PostMapping("/feedback")
+	public ResponseEntity<?> addFeedback(@RequestBody Feedback feedbackrequest) {
+		System.out.println("In feedback request " + feedbackrequest);
+		return ResponseEntity.ok(feedbackService.addFeedback(feedbackrequest));
 	}
 }
