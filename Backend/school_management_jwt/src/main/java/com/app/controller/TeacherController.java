@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -67,6 +68,7 @@ public class TeacherController {
 	}
 	
 	@PostMapping("/feedback")
+	@PreAuthorize("hasRole('TEACHER')")
 	public ResponseEntity<?> addFeedback(@RequestBody Feedback feedbackrequest) {
 		System.out.println("In feedback request " + feedbackrequest);
 		return ResponseEntity.ok(feedbackService.addFeedback(feedbackrequest));

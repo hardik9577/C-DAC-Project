@@ -52,44 +52,6 @@ public class UserController {
 	@Autowired
 	private IAdminService adminService;
 	
-	
-	@PostMapping("/signup/admin")
-	public ResponseEntity<AdminResponseDTO> registerAdmin(@RequestBody AdminSignupRequest adminRequest) {
-		System.out.println("in admin reg : admin request " + adminRequest);
-		return ResponseEntity.ok(adminService.registerAdmin(adminRequest));
-	}
-	
-	@PostMapping("/signup/student")
-	public ResponseEntity<StudentResponseDTO> registerStudent(@RequestBody StudentSignupRequest studentRequest) {
-		System.out.println("in student reg : student request " + studentRequest);
-		return ResponseEntity.ok(studentService.registerStudent(studentRequest));
-	}
-	
-	@GetMapping("/student/list")
-	public List<Student> fetchAllStudents() {
-		System.out.println("in fetch all students");
-		return studentService.getAllStudents();
-	}
-	
-	@GetMapping("/student/{id}")
-	public ResponseEntity<?> getUserDetails(@PathVariable int id) {
-		System.out.println("in get Student details " +id);
-		return ResponseEntity.ok(studentService.getDetails(id));
-	}
-	
-	@DeleteMapping("/student/{studentId}")
-	public ResponseEntity<String> deleteStudentDetails(@PathVariable int studentId) {
-		System.out.println("in delete Student details " + studentId);
-		return ResponseEntity.ok(studentService.deleteStudent(studentId));
-	}
-	
-	@PutMapping("/student/{id}")
-	public ResponseEntity<?> updateStudentDetails(@RequestBody Student student, @PathVariable int id) {
-		System.out.println("in update Student " + student + " " + id);
-		Student existingStudent = studentService.getDetails(id);
-		System.out.println(existingStudent);
-		return ResponseEntity.ok(studentService.updateDetails(student));
-	}
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@RequestBody AuthenticationRequest request) {

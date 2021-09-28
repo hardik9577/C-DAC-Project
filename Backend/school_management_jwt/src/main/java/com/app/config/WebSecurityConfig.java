@@ -44,9 +44,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// lesser restrictive patterns
 				// NOTE : argument of hasRole should NOT start with "ROLE_" as this is
 				// automatically inserted.
-				.antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/student/feedback/(studentId}/**,/student/**").hasRole("STUDENT")
-				.antMatchers("/teacher/{id}/**,/teacher/list/**,/teacher/register/**,/teacher/feedback/**,/teacher/**").hasRole("TEACHER").antMatchers("/parent/**").hasRole("PARENT")
-				.antMatchers("/").permitAll().and()
+				.antMatchers("/admin/signup/**,/admin/**").hasRole("ADMIN").antMatchers("/student/feedback/(studentId}/**,/student/signup/**,/student/list/**,/student/{id}/**,/student/{studentId}/**,/student/**").hasRole("STUDENT")
+				.antMatchers("/teacher/register/**,/teacher/list/**,/teacher/{id}/**,/teacher/list/**,/teacher/feedback/**,/teacher/**").hasRole("TEACHER").antMatchers("/parent/**").hasRole("PARENT")
+				.antMatchers("/","/api/**").permitAll().and()
 				// To tell Spring Security NEVER create an HttpSession use it to obtain the
 				// SecurityContext
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
